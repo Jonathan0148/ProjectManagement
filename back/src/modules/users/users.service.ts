@@ -43,6 +43,7 @@ export class UsersService {
 
     public async findOne(id: number): Promise<ResponseTypedApis> {
         const queryBuilder = this.userRepository.createQueryBuilder('query')
+            .leftJoinAndSelect('query.role', 'role')
             .where('query.id = :id', { id })
             .andWhere('query.status = :state', { state: true });
 

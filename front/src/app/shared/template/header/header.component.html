@@ -5,13 +5,17 @@
   </div>
 
   <div class="header-right">
+    <div class="user-info">
+      <div class="user-name">{{ name }}</div>
+      <div class="user-role">{{ role }}</div>
+    </div>
+
     <a nz-dropdown [nzDropdownMenu]="menu" class="user-menu">
       <i nz-icon nzType="user" nzTheme="outline"></i>
     </a>
 
     <nz-dropdown-menu #menu="nzDropdownMenu">
       <ul nz-menu>
-        <!-- <li nz-menu-item [routerLink]="['/profile']">Perfil</li> -->
         <li nz-menu-item (click)="logout()">Cerrar sesión</li>
       </ul>
     </nz-dropdown-menu>
