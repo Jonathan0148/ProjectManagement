@@ -1,0 +1,28 @@
+<ul nz-menu nzMode="inline" nzTheme="light" class="side-nav">
+  <li nz-submenu nzTitle="Configuración" nzIcon="setting">
+    <ul>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="['/users']">
+          <i nz-icon nzType="user"></i>
+          <span>Usuarios</span>
+        </a>
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="['/roles']">
+          <i nz-icon nzType="appstore"></i>
+          <span>Roles</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li nz-submenu nzTitle="Administración" nzIcon="layout">
+    <ul>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="['/projects']">
+          <i nz-icon nzType="project"></i>
+          <span>Proyectos</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>

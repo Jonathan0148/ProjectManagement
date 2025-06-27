@@ -11,14 +11,58 @@ import { CreateFunctionalityRoleDto, CreateFunctionalityRolePermitDto, CreateRol
 import { UpdateFunctionalityRolePermitDto, UpdateRoleDto } from './dto/update-role.dto';
 import { FunctionalityRole } from 'src/db/entities/functionality-role.entity';
 import { FunctionalityRolePermit } from 'src/db/entities/functionality-role-permit.entity';
+import { Functionality } from 'src/db/entities/functionality.entity';
+import { Permit } from 'src/db/entities/permit.entity';
 
 @Injectable()
 export class RolesService {
     constructor(
         @InjectRepository(Role) private roleRepository: Repository<Role>,
         @InjectRepository(FunctionalityRole) private functionalityRoleRepository: Repository<FunctionalityRole>,
-        @InjectRepository(FunctionalityRolePermit) private functionalityRolePermitRepository: Repository<FunctionalityRolePermit>
+        @InjectRepository(FunctionalityRolePermit) private functionalityRolePermitRepository: Repository<FunctionalityRolePermit>,
+        @InjectRepository(Functionality) private functionalityRepository: Repository<Functionality>,
+        @InjectRepository(Permit) private permitRepository: Repository<Permit>,
     ) { }
+
+    public async getModules(pageOptionsDto: PageOptionsDto): Promise<ResponseTypedApis> {
+        const queryBuilder = this.functionalityRepository.createQueryBuilder('query')
+            .where(
+                new Brackets(qb => {
+                    qb.where('(query.name LIKE :term)', { term: `%${pageOptionsDto.term}%` })
+                })
+            )
+            .andWhere('query.status = :state', { state: true })
+            .orderBy('query.id', pageOptionsDto.order)
+            .skip(pageOptionsDto.skip)
+            .take(pageOptionsDto.take);
+
+        const itemCount = await queryBuilder.getCount();
+        const { entities } = await queryBuilder.getRawAndEntities();
+
+        const pageMetaDto = new PageMetaDto({ itemCount, pageOptionsDto });
+
+        return ApiResponseDataHelper.sendSuccessPaginated(entities, pageMetaDto);
+    }
+
+    public async getPermits(pageOptionsDto: PageOptionsDto): Promise<ResponseTypedApis> {
+        const queryBuilder = this.permitRepository.createQueryBuilder('query')
+            .where(
+                new Brackets(qb => {
+                    qb.where('(query.name LIKE :term)', { term: `%${pageOptionsDto.term}%` })
+                })
+            )
+            .andWhere('query.status = :state', { state: true })
+            .orderBy('query.id', pageOptionsDto.order)
+            .skip(pageOptionsDto.skip)
+            .take(pageOptionsDto.take);
+
+        const itemCount = await queryBuilder.getCount();
+        const { entities } = await queryBuilder.getRawAndEntities();
+
+        const pageMetaDto = new PageMetaDto({ itemCount, pageOptionsDto });
+
+        return ApiResponseDataHelper.sendSuccessPaginated(entities, pageMetaDto);
+    }
 
     public async findAll(pageOptionsDto: PageOptionsDto): Promise<ResponseTypedApis> {
         const queryBuilder = this.roleRepository.createQueryBuilder('query')

@@ -5,16 +5,17 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ApiService } from '../../../../shared/services/api.service';
 import { NzCardModule } from 'ng-zorro-antd/card';
-import { IUser } from '../../../../shared/interfaces/user.interface';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { IRole } from '../../../../shared/interfaces/role.interface';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 @Component({
-  selector: 'app-user-list',
+  selector: 'app-roles-list',
   imports: [
     CommonModule,
     TranslateModule,
@@ -24,13 +25,14 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
     NzCardModule,
     NzToolTipModule,
     NzIconModule,
-    NzPopconfirmModule
+    NzPopconfirmModule,
+    NzPaginationModule
   ],
-  templateUrl: './user-list.component.html',
-  styleUrl: './user-list.component.scss'
+  templateUrl: './roles-list.component.html',
+  styleUrl: './roles-list.component.scss'
 })
-export class UserListComponent implements OnInit {
-  users: any[] = [];
+export class RoleListComponent implements OnInit {
+  roles: any[] = [];
   loading = false;
 
   constructor(
@@ -40,14 +42,14 @@ export class UserListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getRoles();
   }
 
-  getUsers(): void {
+  getRoles(): void {
     this.loading = true;
-    this._api.get<IUser[]>('users').subscribe({
+    this._api.get<IRole[]>('roles').subscribe({
       next: (res) => {
-        this.users = res.data || [];
+        this.roles = res.data || [];
         this.loading = false;
       },
       error: () => {
@@ -56,26 +58,26 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  onAddUser() {
-    this.router.navigate(['/users/form']);
+  onAddRole() {
+    this.router.navigate(['/roles/form']);
   }
 
-  onView(user: IUser) {
-    this.router.navigate([`/users/form/view/${user.id}`]);
+  onView(role: IRole) {
+    this.router.navigate([`/roles/form/view/${role.id}`]);
   }
 
-  onEdit(user: IUser) {
-    this.router.navigate([`/users/form/edit/${user.id}`]);
+  onEdit(role: IRole) {
+    this.router.navigate([`/roles/form/edit/${role.id}`]);
   }
 
-  onDelete(user: IUser): void {
-    this._api.delete(`users/${user.id}`).subscribe({
+  onDelete(role: IRole): void {
+    this._api.delete(`roles/${role.id}`).subscribe({
       next: () => {
-        this.message.success('Usuario eliminado correctamente');
-        this.getUsers();
+        this.message.success('Rol eliminado correctamente');
+        this.getRoles();
       },
       error: () => {
-        this.message.error('Error al eliminar el usuario');
+        this.message.error('Error al eliminar el rol');
       }
     });
   }

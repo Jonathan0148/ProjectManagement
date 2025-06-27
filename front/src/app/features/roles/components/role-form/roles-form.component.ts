@@ -1,11 +1,11 @@
 import { CommonModule, Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
-import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzCheckboxComponent, NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -13,10 +13,15 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { LoadingButtonDirective } from '../../../../shared/directives/loading-button.directive';
 import { ApiService } from '../../../../shared/services/api.service';
 import { IRole } from '../../../../shared/interfaces/role.interface';
-import { IUser } from '../../../../shared/interfaces/user.interface';
+import { IModule } from '../../../../shared/interfaces/module.interface';
+import { IPermit } from '../../../../shared/interfaces/permit.interface';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
+interface IModuleWithPermits extends IModule {
+  selectedPermits: number[];
+}
 @Component({
-  selector: 'app-user-form',
+  selector: 'app-roles-form',
   imports: [
     CommonModule,
     TranslateModule,
@@ -28,17 +33,22 @@ import { IUser } from '../../../../shared/interfaces/user.interface';
     NzInputModule,
     NzSelectModule,
     NzCheckboxModule,
-    LoadingButtonDirective
+    LoadingButtonDirective,
+    NzTableModule,
+    NzCheckboxComponent,
+    FormsModule
   ],
-  templateUrl: './user-form.component.html',
-  styleUrl: './user-form.component.scss'
+  templateUrl: './roles-form.component.html',
+  styleUrl: './roles-form.component.scss'
 })
-export class UserFormComponent {
+export class RoleFormComponent {
   mode: 'add' | 'edit' | 'view' = 'add';
   id: string | null = null;
   loading = false;
   form!: FormGroup;
-  roles: IRole[] = [];
+  modules: IModuleWithPermits[] = [];
+  permits: IPermit[] = [];
+  permitOptions: { label: string, value: number }[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -62,23 +72,14 @@ export class UserFormComponent {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      names: ['', Validators.required],
-      surnames: ['', Validators.required],
-      username: [{ value: '', disabled: true }, Validators.required],
-      email: ['', [Validators.email]],
-      roles_id: [null, Validators.required],
-      active: [true]
+      name: ['', Validators.required],
+      description: ['']
     });
 
-    this.getRoles();
-
-    if (this.mode === 'add') {
-      this.form.get('names')?.valueChanges.subscribe(() => this.generateUsername());
-      this.form.get('surnames')?.valueChanges.subscribe(() => this.generateUsername());
-    }
+    this.loadModulesAndPermits();
 
     if (this.mode === 'view' || this.mode === 'edit') {
-      this.loadUser();
+      this.loadRole();
     }
   }
 
@@ -87,11 +88,21 @@ export class UserFormComponent {
       this.loading = true;
       const data = this.form.getRawValue();
 
+      const selectedModulePermits = this.modules
+        .filter(module => module.selectedPermits.length > 0)
+        .map(module => ({
+          functionalityId: module.id,
+          functionalityRolePermit: module.selectedPermits.map(permitId => ({
+            permitId
+          }))
+        }));
+
+      data.functionalityRole = selectedModulePermits;
       if (this.mode === 'edit' && this.id) {
-        this._api.put(`users/${this.id}`, data).subscribe({
+        this._api.put(`roles/${this.id}`, data).subscribe({
           next: () => {
             this.loading = false;
-            this.router.navigate(['/users']);
+            this.router.navigate(['/roles']);
           },
           error: (err) => {
             console.error(err);
@@ -99,10 +110,10 @@ export class UserFormComponent {
           }
         });
       } else {
-        this._api.post('users', data).subscribe({
+        this._api.post('roles', data).subscribe({
           next: () => {
             this.loading = false;
-            this.router.navigate(['/users']);
+            this.router.navigate(['/roles']);
           },
           error: (err) => {
             console.error(err);
@@ -113,28 +124,38 @@ export class UserFormComponent {
     }
   }
 
-  getRoles() {
-    this._api.get<IRole[]>('roles').subscribe({
+
+  loadModulesAndPermits(): void {
+    this._api.get<IModule[]>('roles/getModules').subscribe({
       next: (res) => {
-        this.roles = res.data.length > 0 ? res.data : [];
-        this.loading = false;
+        this.modules = res.data.map((mod: any) => ({
+          ...mod,
+          selectedPermits: []
+        }));
+      }
+    });
+
+    this._api.get<IPermit[]>('roles/getPermits').subscribe({
+      next: (res) => {
+        this.permits = res.data;
+        this.permitOptions = this.permits.map(p => ({ label: p.name, value: p.id }));
       }
     });
   }
 
-  loadUser(): void {
+  onPermitsChange(selected: number[], module: any): void {
+    console.log('Módulo:', module.name, 'Permisos seleccionados:', selected);
+  }
+
+  loadRole(): void {
     if (!this.id) return;
 
-    this._api.get<IUser>(`users/${this.id}`).subscribe({
+    this._api.get<IRole>(`roles/${this.id}`).subscribe({
       next: (res) => {
-        const user = res.data;
+        const role = res.data;
         this.form.patchValue({
-          names: user.names,
-          surnames: user.surnames,
-          username: user.username,
-          email: user.email,
-          roles_id: user.roles_id,
-          active: !!user.active
+          name: role.name,
+          description: role.description
         });
 
         if (this.mode === 'view') {
@@ -142,26 +163,17 @@ export class UserFormComponent {
         }
       },
       error: (err) => {
-        console.error('Error cargando usuario:', err);
+        console.error('Error cargando rol:', err);
       }
     });
   }
 
-  goBack(): void {
-    this.location.back();
+  onPermitToggle(checked: any, module: any, permit: any): void {
+    module.permitSelection[permit.id] = checked;
+    console.log(`Permiso ${permit.name} en módulo ${module.name}: ${checked}`);
   }
 
-  generateUsername(): void {
-    const names = this.form.get('names')?.value?.trim();
-    const surnames = this.form.get('surnames')?.value?.trim();
-
-    if (names && surnames) {
-      const firstNameLetter = names.charAt(0).toUpperCase();
-      const surnameCapitalized = surnames.charAt(0).toUpperCase() + surnames.slice(1).toLowerCase();
-
-      const generatedUsername = firstNameLetter + surnameCapitalized;
-
-      this.form.get('username')?.setValue(generatedUsername, { emitEvent: false });
-    }
+  goBack(): void {
+    this.location.back();
   }
 }

@@ -1,11 +1,11 @@
-.user-list-container {
+.role-list-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   min-height: 100%;
 }
 
-.user-list-card.expanded-card {
+.role-list-card.expanded-card {
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);

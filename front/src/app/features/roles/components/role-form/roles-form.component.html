@@ -1,0 +1,66 @@
+<div class="role-form-container">
+  <nz-card class="role-list-card expanded-card" [nzBordered]="false">
+    <div class="header-with-back">
+      <button nz-button nzType="text" nzShape="circle" (click)="goBack()" nz-tooltip="Regresar">
+        <i nz-icon nzType="arrow-left"></i>
+      </button>
+      <div>
+        <h2 class="mb-0">{{ 'role.addTitle' | translate }}</h2>
+        <p class="text-muted mb-2">{{ 'role.addSubtitle' | translate }}</p>
+      </div>
+    </div>
+
+    <form nz-form [formGroup]="form" nzLayout="vertical" (ngSubmit)="submitForm()">
+      <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="name">{{ 'role.name' | translate }}</nz-form-label>
+            <nz-form-control nzErrorTip="Por favor ingresa el nombre">
+              <input type="text" nz-input formControlName="name" placeholder="Nombre" />
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzFor="description">{{ 'role.description' | translate }}</nz-form-label>
+            <nz-form-control nzErrorTip="Por favor ingresa una descrición">
+              <input type="text" nz-input formControlName="description" placeholder="Descripción" />
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+      </nz-row>
+
+      <nz-table [nzData]="modules" [nzBordered]="true" [nzSize]="'middle'" *ngIf="permits.length > 0">
+        <thead>
+          <tr>
+            <th>Módulo</th>
+            <th style="width: 70%;">Permisos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let module of modules">
+            <td>{{ module.name }}</td>
+            <td>
+              <nz-select class="permit-select" [nzMode]="'multiple'" [nzOptions]="permitOptions"
+                [(ngModel)]="module.selectedPermits" [ngModelOptions]="{ standalone: true }"
+                nzPlaceHolder="Selecciona permisos">
+              </nz-select>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+
+      <nz-form-item *ngIf="mode !== 'view'">
+        <nz-form-control>
+          <div class="d-flex justify-content-end w-100">
+            <button nz-button nzType="primary" [disabled]="form.invalid">
+              <i nz-icon nzType="save"></i>
+              {{ 'global.save' | translate }}
+            </button>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-card>
+</div>

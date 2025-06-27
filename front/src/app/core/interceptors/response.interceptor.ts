@@ -14,7 +14,11 @@ export const responseInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     tap((event: HttpEvent<any>) => {
-      if (event instanceof HttpResponse && event.body?.message) {
+      if (
+        event instanceof HttpResponse &&
+        event.status !== 200 &&
+        event.body?.message
+      ) {
         message.success(event.body.message);
       }
     }),

@@ -19,6 +19,7 @@ export class UsersService {
 
     public async findAll(pageOptionsDto: PageOptionsDto): Promise<ResponseTypedApis> {
         const queryBuilder = this.userRepository.createQueryBuilder('query')
+            .leftJoinAndSelect('query.role', 'role')
             .where(
                 new Brackets(qb => {
                     qb.where('(query.names LIKE :term)', { term: `%${pageOptionsDto.term}%` })

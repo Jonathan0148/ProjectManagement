@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  padding: 0 24px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px #f0f1f2;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      width: 32px;
+      height: 32px;
+      margin-right: 12px;
+    }
+
+    .app-name {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+
+    .user-menu {
+      cursor: pointer;
+      font-size: 18px;
+    }
+  }
+}

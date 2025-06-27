@@ -8,6 +8,8 @@ import { Role } from 'src/db/entities/role.entity';
 import { ResponseTypedApis } from 'src/common/interfaces/api-response-typed.interface';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
+import { Functionality } from 'src/db/entities/functionality.entity';
+import { Permit } from 'src/db/entities/permit.entity';
 
 @Controller('roles')
 @UseGuards(JwtAuthGuard)
@@ -15,6 +17,18 @@ import { UpdateRoleDto } from './dto/update-role.dto';
 @ApiBearerAuth()
 export class RolesController {
   constructor(private readonly rolesService: RolesService) { }
+
+  @Get('getModules')
+  @ApiPaginatedResponse(Functionality)
+  async getModules(@Query() pageOptionsDto: PageOptionsDto): Promise<ResponseTypedApis> {
+    return await this.rolesService.getModules(pageOptionsDto);
+  }
+
+  @Get('getPermits')
+  @ApiPaginatedResponse(Permit)
+  async getPermits(@Query() pageOptionsDto: PageOptionsDto): Promise<ResponseTypedApis> {
+    return await this.rolesService.getPermits(pageOptionsDto);
+  }
 
   @Get()
   @ApiPaginatedResponse(Role)

@@ -7,12 +7,13 @@
     "export": "Exportar",
     "copy": "Copiar",
     "save": "Guardar",
-    "detail": "Ver Detalle",
+    "view": "Ver",
     "edit": "Editar",
     "back": "Regresar",
     "delete": "Eliminar",
     "deleteConfirm": "Esta seguro que desea eliminar este registro?",
-    "searchProduct": "Búsqueda avanzada"
+    "searchProduct": "Búsqueda avanzada",
+    "actions": "Acciones"
   },
   "errors": {
     "required": "Campo requerido"
@@ -31,16 +32,28 @@
     "logout": "Cerrar Sesión"
   },
   "user": {
-    "editProfile": "Editar Perfil",
-    "locals": "Administrar Locales",
-    "settings": "Configuración"
+    "tittle": "Lista de Usuarios",
+    "subtittle": "Gestión de usuarios registrados en el sistema",
+    "role": "Rol",
+    "name": "Nombre",
+    "image": "Imagen",
+    "active": "Activo",
+    "dateInsert": "Fecha de Registro",
+    "addTitle": "Agregar Usuario",
+    "addSubtitle": "Completa el formulario para registrar un nuevo usuario",
+    "names": "Nombres",
+    "surnames": "Apellidos",
+    "username": "Usuario",
+    "email": "Correo electrónico",
+    "password": "Contraseña"
   },
   "role": {
-    "admin": "Administrador",
-    "add": "Agregar Rol",
-    "addTitle": "Agregar Rol",
-    "editTitle": "Editar Rol",
+    "tittle": "Lista de Roles",
+    "subtittle": "Gestión de roles registrados en el sistema",
+    "name": "Nombre",
     "description": "Descripción",
-    "descritionModule": "Seleccione los modulos y los permisos que se van a habilitar al usuario:"
+    "dateInsert": "Fecha de Registro",
+    "addTitle": "Agregar Rol",
+    "addSubtitle": "Completa el formulario para registrar un nuevo rol"
   }
 }
