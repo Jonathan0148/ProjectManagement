@@ -1,4 +1,3 @@
 export class UserLoginDto {
-    userId: string;
-    clientId?: string;
+    userId: number;
 }

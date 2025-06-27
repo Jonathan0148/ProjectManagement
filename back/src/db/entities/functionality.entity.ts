@@ -1,20 +1,16 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { User } from "./user.entity";
 import { FunctionalityRole } from "./functionality-role.entity";
 
-@Entity('roles')
-export class Role {
+@Entity('modules')
+export class Functionality {
   @PrimaryGeneratedColumn({ name: 'id', type: 'int' })
   id: number;
 
-  @Column({ name: 'name', type: 'varchar', length: 30 })
+  @Column({ name: 'name', type: 'varchar', length: 50 })
   name: string;
 
   @Column({ name: 'description', type: 'text', nullable: true })
   description?: string;
-
-  @Column({ name: 'active', type: 'tinyint' })
-  active?: boolean;
 
   @Column({ name: 'status', type: 'tinyint' })
   status: boolean;
@@ -31,9 +27,6 @@ export class Role {
   @Column({ name: 'insert_user_id', type: 'int' })
   insertUserId: number;
 
-  @OneToMany(() => User, (user) => user.role)
-  user: User[];
-
-  @OneToMany(() => FunctionalityRole, (functionalityRole) => functionalityRole.role)
+  @OneToMany(() => FunctionalityRole, (functionalityRole) => functionalityRole.functionality)
   functionalityRole: FunctionalityRole[];
 }
