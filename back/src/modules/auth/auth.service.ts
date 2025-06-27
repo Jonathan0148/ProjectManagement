@@ -22,6 +22,7 @@ export class AuthService {
     const user = await this.userRepository.createQueryBuilder(alias)
       .leftJoinAndSelect(`${alias}.role`, 'role')
       .where(`${alias}.status = :state`, { state: true })
+      .andWhere(`${alias}.active = :active`, { active: true })
       .andWhere(`${alias}.username = :username`, { username })
       .getOne();
 
@@ -36,7 +37,7 @@ export class AuthService {
       expiresIn: '1d',
     });
 
-    return ApiResponseDataHelper.sendSuccess({token});
+    return ApiResponseDataHelper.sendSuccess({token}, `Bienvenido, ${user.names}. Inicio exitoso.`);
   }
 
   async encryptPasword(text: string): Promise<string> {

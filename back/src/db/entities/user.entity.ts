@@ -41,7 +41,7 @@ export class User {
   updateDate?: Date;
 
   @Column({ name: 'update_user_id', type: 'int', nullable: true })
-  updateDateId?: number;
+  updateUserId?: number;
 
   @Column({ name: 'insert_date', type: 'datetime' })
   insertDate: Date;

@@ -1,9 +1,20 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { ResponseCodes } from '../constanst/response-code';
-import { ResponseTypedError, ResponseTypedSuccess } from '../interfaces/api-response-typed.interface';
+import { ResponseTypedError, ResponseTypedSuccess, ResponseTypedSuccessPaginated } from '../interfaces/api-response-typed.interface';
+import { PageMetaDto } from '../dtos-globals/page-meta.dto';
 
 @Injectable()
 export class ApiResponseDataHelper {
+  // Respuesta de éxito paginada
+  static sendSuccessPaginated(data: any[], meta: PageMetaDto, message: string = 'Solicitud exitosa', statusCode: HttpStatus = ResponseCodes.SUCCESS.OK): ResponseTypedSuccessPaginated {
+    return {
+      statusCode,
+      message,
+      data,
+      meta
+    };
+  }
+
   // Respuesta de éxito
   static sendSuccess(data: any, message: string = 'Solicitud exitosa', statusCode: HttpStatus = ResponseCodes.SUCCESS.OK): ResponseTypedSuccess {
     return {
