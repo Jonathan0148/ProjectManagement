@@ -36,7 +36,7 @@ export class AuthService {
       expiresIn: '1d',
     });
 
-    return ApiResponseDataHelper.sendSuccess({token});
+    return ApiResponseDataHelper.sendSuccess({token}, `Bienvenido, ${user.names}. Inicio exitoso.`);
   }
 
   async encryptPasword(text: string): Promise<string> {
