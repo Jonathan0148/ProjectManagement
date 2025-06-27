@@ -15,6 +15,7 @@ import { tokenInterceptor } from './app/core/interceptors/auth.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { USERS_CONFIG } from './app/features/users/users.config';
 import { SHARED_CONFIG } from './app/shared/shared.config';
+import { PROJECTS_CONFIG } from './app/features/projects/projects.config';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -26,6 +27,7 @@ bootstrapApplication(AppComponent, {
     CookieService,
     ...AUTH_CONFIG,
     ...USERS_CONFIG,
-    ...SHARED_CONFIG
+    ...SHARED_CONFIG,
+    ...PROJECTS_CONFIG
   ]
 });

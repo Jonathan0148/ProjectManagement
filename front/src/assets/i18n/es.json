@@ -55,5 +55,13 @@
     "dateInsert": "Fecha de Registro",
     "addTitle": "Agregar Rol",
     "addSubtitle": "Completa el formulario para registrar un nuevo rol"
+  },
+  "project": {
+    "tittle": "Lista de Proyectos",
+    "subtittle": "Gestión de proyectos registrados en el sistema",
+    "name": "Nombre",
+    "dateInsert": "Fecha de Registro",
+    "addTitle": "Agregar Proyecto",
+    "addSubtitle": "Completa el formulario para registrar un nuevo proyecto"
   }
 }
