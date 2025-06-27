@@ -1,4 +1,6 @@
 @use 'sass:math';
+@use "sass:color";
+@use "sass:map";
 
 // align
 .align-baseline    { vertical-align: baseline !important; } // Browser default
@@ -14,10 +16,10 @@
         background-color: $color !important;
     }
     a#{$parent} {
-        
+
         &:hover,
         &:focus {
-            background-color: darken($color, 10%) !important;
+            background-color: color.adjust($color, $lightness: 10%) !important;
         }
     }
 }
@@ -25,11 +27,11 @@
 .bg-white {
     background-color: $white !important;
   }
-  
+
 .bg-transparent {
     background-color: transparent !important;
 }
-  
+
 @include bg-variant('.bg-primary', $brand-primary);
 
 @include bg-variant('.bg-secondary', $brand-secondary);
@@ -51,7 +53,7 @@
 @include bg-variant('.bg-gray-lighter', $gray-lighter);
 
 @include bg-variant('.bg-gray-lightest', $gray-lightest);
-  
+
 
 //border
 .border         { border: $border-width solid $border-color !important; }
@@ -100,10 +102,10 @@
 }
 
 //display
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-  
+
       .d#{$infix}-none         { display: none !important; }
       .d#{$infix}-inline       { display: inline !important; }
       .d#{$infix}-inline-block { display: inline-block !important; }
@@ -115,7 +117,7 @@
       .d#{$infix}-inline-flex  { display: inline-flex !important; }
     }
 }
-  
+
 @media print {
     .d-print-none         { display: none !important; }
     .d-print-inline       { display: inline !important; }
@@ -156,12 +158,12 @@
     width: 100%;
     padding: 0;
     overflow: hidden;
-  
+
     &::before {
         display: block;
         content: "";
     }
-  
+
     .embed-responsive-item,
     iframe,
     embed,
@@ -179,42 +181,42 @@
 
 .embed-responsive-21by9 {
     &::before {
-        padding-top: percentage(math.div(9, 21));
+        padding-top: math.percentage(math.div(9, 21));
     }
 }
 
 .embed-responsive-16by9 {
     &::before {
-        padding-top: percentage(math.div(9, 16));
+        padding-top: math.percentage(math.div(9, 16));
     }
 }
 
 .embed-responsive-4by3 {
     &::before {
-        padding-top: percentage(math.div(3, 4));
+        padding-top: math.percentage(math.div(3, 4));
     }
 }
 
 .embed-responsive-1by1 {
     &::before {
-        padding-top: percentage(math.div(1, 1));
+        padding-top: math.percentage(math.div(1, 1));
     }
 }
 
 // flex
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
         $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-    
+
         .flex#{$infix}-first     { order: -1; }
         .flex#{$infix}-last      { order: 1; }
         .flex#{$infix}-unordered { order: 0; }
-    
+
         .flex#{$infix}-row            { flex-direction: row !important; }
         .flex#{$infix}-column         { flex-direction: column !important; }
         .flex#{$infix}-row-reverse    { flex-direction: row-reverse !important; }
         .flex#{$infix}-column-reverse { flex-direction: column-reverse !important; }
-    
+
         .flex#{$infix}-wrap         { flex-wrap: wrap !important; }
         .flex#{$infix}-nowrap       { flex-wrap: nowrap !important; }
         .flex#{$infix}-wrap-reverse { flex-wrap: wrap-reverse !important; }
@@ -226,26 +228,26 @@
         .flex#{$infix}-shrink-1         { flex-shrink: 1 !important; }
 
         .flex#{$infix}-fill         { flex: 1 1 auto!important; }
-    
+
         .justify-content#{$infix}-start   { justify-content: flex-start !important; }
         .justify-content#{$infix}-end     { justify-content: flex-end !important; }
         .justify-content#{$infix}-center  { justify-content: center !important; }
         .justify-content#{$infix}-between { justify-content: space-between !important; }
         .justify-content#{$infix}-around  { justify-content: space-around !important; }
-    
+
         .align-items#{$infix}-start    { align-items: flex-start !important; }
         .align-items#{$infix}-end      { align-items: flex-end !important; }
         .align-items#{$infix}-center   { align-items: center !important; }
         .align-items#{$infix}-baseline { align-items: baseline !important; }
         .align-items#{$infix}-stretch  { align-items: stretch !important; }
-    
+
         .align-content#{$infix}-start   { align-content: flex-start !important; }
         .align-content#{$infix}-end     { align-content: flex-end !important; }
         .align-content#{$infix}-center  { align-content: center !important; }
         .align-content#{$infix}-between { align-content: space-between !important; }
         .align-content#{$infix}-around  { align-content: space-around !important; }
         .align-content#{$infix}-stretch { align-content: stretch !important; }
-    
+
         .align-self#{$infix}-auto     { align-self: auto !important; }
         .align-self#{$infix}-start    { align-self: flex-start !important; }
         .align-self#{$infix}-end      { align-self: flex-end !important; }
@@ -255,11 +257,11 @@
     }
 }
 
-//float 
-@each $breakpoint in map-keys($grid-breakpoints) {
+//float
+@each $breakpoint in map.keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
         $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-    
+
         .float#{$infix}-left  { float: left !important; }
         .float#{$infix}-right { float: right !important; }
         .float#{$infix}-none  { float: none !important; }
@@ -390,12 +392,12 @@ $positions: static, relative, absolute, fixed, sticky;
     width: 100%!important;
 }
 
-.mw-100 { 
-    max-width: 100% !important; 
+.mw-100 {
+    max-width: 100% !important;
 }
 
-.mh-100 { 
-    max-height: 100% !important; 
+.mh-100 {
+    max-height: 100% !important;
 }
 
 .h-10 {
@@ -475,13 +477,13 @@ $positions: static, relative, absolute, fixed, sticky;
 }
 
 // Margin and Padding
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-  
+
         @each $prop, $abbrev in (margin: m, padding: p) {
             @each $size, $length in $spacers {
-    
+
             .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
             .#{$abbrev}t#{$infix}-#{$size},
             .#{$abbrev}y#{$infix}-#{$size} {
@@ -501,7 +503,7 @@ $positions: static, relative, absolute, fixed, sticky;
             }
             }
         }
-    
+
         // Some special margin utils
         .m#{$infix}-auto { margin: auto !important; }
         .mt#{$infix}-auto,
@@ -530,12 +532,12 @@ $positions: static, relative, absolute, fixed, sticky;
     white-space: nowrap;
 }
 
-  
+
 .text-justify  { text-align: justify !important; }
 .text-nowrap   { white-space: nowrap !important; }
 .text-truncate { @include text-truncate; }
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
         $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
@@ -598,8 +600,8 @@ $positions: static, relative, absolute, fixed, sticky;
      color: $body-color !important;
 }
 
-.text-muted { 
-    color: $text-muted !important; 
+.text-muted {
+    color: $text-muted !important;
 }
 
 .text-link {

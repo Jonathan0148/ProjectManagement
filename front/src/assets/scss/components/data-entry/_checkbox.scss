@@ -1,7 +1,9 @@
+@use '../../variables' as vars;
+
 .ant-checkbox,
 .ant-checkbox-wrapper {
     font-family: $font-family-base;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
 }
 
 .ant-checkbox-wrapper {
@@ -53,7 +55,7 @@
 .ant-checkbox-input {
 
     &:focus,
-    &:hover {   
+    &:hover {
         + .ant-checkbox-inner {
             border-color: $checkbox-theme-color;
         }
@@ -61,7 +63,7 @@
 }
 
 .ant-checkbox-indeterminate {
-    
+
     .ant-checkbox-inner {
 
         &:after {

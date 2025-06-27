@@ -1,8 +1,10 @@
+@use '../../variables' as vars;
+
 .ant-tree {
     font-family: $font-family-base;
     line-height: $line-height-base;
     color: $body-color;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
 
     li {
         span[draggable=true],
@@ -62,7 +64,7 @@
 .ant-tree-checkbox,
 .ant-tree-checkbox-wrapper {
     font-family: $font-family-base;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     color: $body-color;
 }
 
@@ -132,7 +134,7 @@ li.ant-tree-treenode-disabled {
     >span:not(.ant-tree-switcher) {
         color: rgba($body-color,.25);
         cursor: not-allowed;
-    }    
+    }
 }
 
 .custom-node {

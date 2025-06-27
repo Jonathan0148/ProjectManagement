@@ -1,6 +1,9 @@
+@use "sass:list";
+@use '../../variables' as vars;
+
 .ant-badge {
     font-family: $font-family-sans-serif;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     color: $body-color;
     position: relative;
@@ -19,12 +22,12 @@
         color: $white;
         line-height: $badge-count-height;
     }
-}    
+}
 
 .ant-badge-status-text {
     color: $body-color;
-    font-size: $font-size-base;
-    margin-left: 8px; 
+    font-size: vars.$font-size-base;
+    margin-left: 8px;
 }
 
 .ant-badge-default {
@@ -66,7 +69,7 @@
 }
 
 @each $badge in $tone-loop {
-    .ant-badge-status-#{nth($badge, 1)} {
-        background: #{nth($badge, 2)};
+    .ant-badge-status-#{list.nth($badge, 1)} {
+        background: #{list.nth($badge, 2)};
     }
 }

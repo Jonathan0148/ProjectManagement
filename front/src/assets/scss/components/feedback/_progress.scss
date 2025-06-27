@@ -1,7 +1,9 @@
+@use '../../variables' as vars;
+
 .ant-progress {
     line-height: $line-height-base;
     color: $body-color;
-}    
+}
 
 .ant-progress-inner {
     background-color: $progress-bg;
@@ -12,7 +14,7 @@
 
 .ant-progress-line {
     width: 100%;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     position: relative;
 }
 
@@ -34,7 +36,7 @@
     &:not(.ant-progress-circle-gradient) {
         .ant-progress-circle-path {
             stroke: $progress-bar-bg !important;
-        } 
+        }
     }
 }
 
@@ -63,7 +65,7 @@
         &:not(.ant-progress-circle-gradient) {
             .ant-progress-circle-path {
                 stroke: $brand-danger !important;
-            } 
+            }
         }
     }
 }
@@ -86,7 +88,7 @@
         &:not(.ant-progress-circle-gradient) {
             .ant-progress-circle-path {
                 stroke: $brand-success !important;
-            } 
+            }
         }
     }
 }
@@ -116,7 +118,7 @@
             color: $brand-success
         }
     }
-} 
+}
 
 .ant-progress-small {
 
@@ -134,5 +136,5 @@
     .ant-progress-bg {
         height: 4px !important;
     }
-}  
+}
 

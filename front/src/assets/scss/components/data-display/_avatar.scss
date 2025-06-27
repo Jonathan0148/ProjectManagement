@@ -1,6 +1,9 @@
+@use "sass:list";
+@use '../../variables' as vars;
+
 .ant-avatar {
     font-family: $font-family-sans-serif;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     color: $body-color;
     text-align: center;
@@ -9,11 +12,11 @@
     white-space: nowrap;
     position: relative;
     overflow: hidden;
-    vertical-align: middle; 
+    vertical-align: middle;
     width: $avatar-size;
     height: $avatar-size;
     line-height: $avatar-size;
-    border-radius: $border-radius-circle; 
+    border-radius: $border-radius-circle;
 
     &.ant-avatar-icon {
         font-size: $avatar-icon;
@@ -27,7 +30,7 @@
 
     > * {
         line-height: $avatar-size-lg;
-    }    
+    }
 
     &.ant-avatar-icon {
         font-size: $avatar-icon-lg;
@@ -41,7 +44,7 @@
 
     > * {
         line-height: $avatar-size-sm;
-    }    
+    }
 
     &.ant-avatar-icon {
         font-size: $avatar-icon-sm;
@@ -54,11 +57,11 @@
 
 @each $tone in $tone-loop {
 
-    .ant-avatar-#{nth($tone, 1)} {
-        color: #{nth($tone, 2)};
-        background: #{nth($tone, 3)};
+    .ant-avatar-#{list.nth($tone, 1)} {
+        color: #{list.nth($tone, 2)};
+        background: #{list.nth($tone, 3)};
     }
-}    
+}
 
 .avatar-string {
 
@@ -66,4 +69,4 @@
         margin-left: -5px;
         border: 2px solid $white;
     }
-} 
+}

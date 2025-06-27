@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .ant-back-top {
     font-family: $font-family-base;
     bottom: 50px;
@@ -10,7 +12,7 @@
 
     &:hover,
     &:focus {
-        background-color: darken($brand-primary, 10%)
+        background-color: color.adjust($brand-primary, $lightness: -5%);
     }
 }
 

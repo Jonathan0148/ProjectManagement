@@ -1,6 +1,8 @@
+@use '../../variables' as vars;
+
 .ant-page-header {
     color: $gray-dark;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
 }
 
 .ant-page-header-title-view-title {
@@ -12,5 +14,5 @@
 .ant-page-header-title-view-sub-title {
     padding-right: 12px;
     color: $gray-light;
-    font-size: $font-size-base;
-}    
+    font-size: vars.$font-size-base;
+}

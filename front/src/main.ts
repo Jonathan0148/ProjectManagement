@@ -11,14 +11,19 @@ import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import { icons } from './app/icons';
 import { responseInterceptor } from './app/core/interceptors/response.interceptor';
 import { AUTH_CONFIG } from './app/features/auth/auth.config';
+import { tokenInterceptor } from './app/core/interceptors/auth.interceptor';
+import { CookieService } from 'ngx-cookie-service';
+import { USERS_CONFIG } from './app/features/users/users.config';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient(withInterceptors([responseInterceptor])),
+    provideHttpClient(withInterceptors([responseInterceptor, tokenInterceptor])),
     provideAnimations(),
     provideRouter(appRoutes),
     provideNgxTranslate(),
     { provide: NZ_ICONS, useValue: icons },
-    ...AUTH_CONFIG
+    CookieService,
+    ...AUTH_CONFIG,
+    ...USERS_CONFIG
   ]
 });

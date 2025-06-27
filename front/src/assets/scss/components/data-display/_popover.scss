@@ -1,6 +1,8 @@
+@use '../../variables' as vars;
+
 .ant-popover {
     font-family: $font-family-sans-serif;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     color: $body-color;
     z-index: $zindex-popover;
@@ -19,13 +21,13 @@
 }
 
 .ant-popover-placement-bottom,
-.ant-popover-placement-bottomLeft, 
+.ant-popover-placement-bottomLeft,
 .ant-popover-placement-bottomRight {
     padding-top: $popover-placement-gutter;
 }
 
-.ant-popover-placement-right, 
-.ant-popover-placement-rightBottom, 
+.ant-popover-placement-right,
+.ant-popover-placement-rightBottom,
 .ant-popover-placement-rightTop {
     padding-left: $popover-placement-gutter;
 }

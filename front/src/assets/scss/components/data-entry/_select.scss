@@ -1,6 +1,8 @@
+@use '../../variables' as vars;
+
 .ant-select {
     color: $input-color;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
 
     &:not(.ant-select-disabled) {
@@ -12,7 +14,7 @@
             }
         }
     }
-}  
+}
 
 .ant-select-single {
 
@@ -129,7 +131,7 @@
         .ant-select-selector {
             height: $select-height-lg + 0.125rem;
         }
-        
+
         .ant-select-selection-item {
             height: $select-tag-height-lg;
             line-height: $select-tag-height-lg - 0.125rem;
@@ -159,7 +161,7 @@
 .ant-select-item {
     color: $body-color;
     font-weight: $font-weight-normal;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $select-item-line-height;
 }
 

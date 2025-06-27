@@ -1,3 +1,5 @@
+@use "sass:list";
+
 .header {
     background: $white;
     height: $header-height;
@@ -9,18 +11,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-   
+
     .title__principaly{
-        @include transition(all 0.2s ease); 
+        font-size: 22px;
+        font-weight: bold;
+        margin: 0;
+        @include transition(all 0.2s ease);
         @include screen-laptop-only {
             width: $side-nav-width-laptop;
         }
         @include screen-tablet {
             display: none;
         }
-        font-size: 22px;
-        font-weight: bold;
-        margin: 0;
         i{
             color: $blue;
         }
@@ -29,7 +31,7 @@
     .logo {
         width: $side-nav-width;
         border-right: 1px solid $border-color;
-        @include transition(all 0.2s ease); 
+        @include transition(all 0.2s ease);
 
         @include screen-laptop-only {
             width: $side-nav-width-laptop;
@@ -38,7 +40,7 @@
         @include screen-tablet {
             display: none;
         }
-        
+
         > a {
             display: block;
             text-align: center;
@@ -75,8 +77,8 @@
                     font-size: 18px;
                     color: $body-color;
                     display: block;
-                    @include transition(background-color 0.3s); 
                     border-radius: $border-radius;
+                    @include transition(background-color 0.3s);
 
                     &:hover,
                     &:focus,
@@ -85,8 +87,8 @@
                         background-color: rgba($brand-primary, 0.1);
 
                         .ant-badge {
-                            color: $brand-primary; 
-                        }    
+                            color: $brand-primary;
+                        }
                     }
 
                     .ant-badge {
@@ -154,7 +156,7 @@
                     font-size: 24px;
                 }
             }
-        }    
+        }
     }
 }
 
@@ -195,24 +197,24 @@
                         background-color: rgba($white, 0.15);
 
                         .ant-badge {
-                            color: $white; 
-                        }    
+                            color: $white;
+                        }
                     }
 
                     .ant-badge {
                         color: rgba($white, 0.8);
                     }
-                }    
+                }
             }
-        }        
+        }
     }
 }
 
 @each $theme in $theme-color-loop {
-    .#{nth($theme, 1)} {
+    .#{list.nth($theme, 1)} {
 
         .header {
-            background-color: #{nth($theme, 2)};
+            background-color: #{list.nth($theme, 2)};
         }
     }
 }

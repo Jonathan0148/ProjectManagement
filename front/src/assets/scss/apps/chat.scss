@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $chat-height-offset: $header-height + $layout-content-gutter + $layout-content-gutter + $footer-height;
 $chat-height-offset-sm: $header-height + $layout-content-gutter-sm + $layout-content-gutter-sm + $footer-height;
 $chat-header-height: 75px;
@@ -15,7 +17,7 @@ $chat-list-width: 380px;
 		.conversation-wrapper {
 			position: relative;
 			height: 100%;
-			
+
 			.conversation-header {
 				position: relative;
                 height: $chat-header-height;
@@ -23,7 +25,7 @@ $chat-list-width: 380px;
                 align-items: center;
 				padding: 0px 25px;
 				border-bottom: 1px solid $border-color;
-				
+
 				.back {
 					position: absolute;
 					line-height: $chat-header-height;
@@ -31,14 +33,14 @@ $chat-list-width: 380px;
 					top: 2px;
 					font-size: 18px;
 					color: $gray-light;
-					
+
 					&:hover,
 					&:focus {
 						text-decoration: none;
 						color: $gray-dark;
 					}
 				}
-				
+
 				.recipient {
 					display: inline-block;
 					font-size: 16px;
@@ -55,12 +57,12 @@ $chat-list-width: 380px;
 					}
 				}
 			}
-			
+
 			.conversation-body {
 				padding: 15px 25px;
 				position: relative;
 				width: 100%;
-				
+
 				.msg {
                     display: flex;
 					margin-bottom: 15px;
@@ -101,7 +103,7 @@ $chat-list-width: 380px;
 							}
 						}
 					}
-					
+
 					&.msg-sent {
                         justify-content: flex-end;
 
@@ -115,31 +117,31 @@ $chat-list-width: 380px;
 					}
 				}
 			}
-			
+
 			.conversation-footer {
 				position: relative;
 				background-color: $white;
 				border-top: 1px solid $border-color;
                 height: 100%;
-                
+
 				.upload-btn,
 				.sent-btn  {
 					border: 0px;
 					background-color: transparent;
-					color: lighten($gray-light,20%);
+					color: color.adjust($gray-light, $lightness: 20%);
 					outline: none;
 					font-size: 18px;
 					position: absolute;
 					top: 12px;
 					left: 10px;
 					@include transition(all 0.2s ease-out);
-					
+
 					&:hover,
 					&:focus {
 						color: $gray-dark;
 					}
 				}
-				
+
 				.sent-btn {
 					left: auto;
 					right: 20px;
@@ -157,19 +159,19 @@ $chat-list-width: 380px;
 
 		@include screen-mobile {
 			border: 0px;
-		}	
+		}
 
 		.chat-list {
 			width: $chat-list-width;
 			border-right: 1px solid $border-color;
 			float: left;
 			background-color: $white;
-			
+
 			@include screen-mobile {
 				width: 100%;
 				border-right: 0px;
 				border: 1px solid $border-color;
-			}	
+			}
 
 			.chat-user-list {
 				overflow: auto;
@@ -178,26 +180,26 @@ $chat-list-width: 380px;
 
 				@include screen-mobile {
 					height: calc(100vh - #{$chat-header-height} - #{$chat-height-offset});
-				}	
-				
+				}
+
 				.ant-list-item {
-					@include transition(all 0.3s ease-in-out); 
+					@include transition(all 0.3s ease-in-out);
 
 					&:hover,
 					&.active {
 						background-color: #fafbfe;
 					}
 				}
-                
+
                 .msg-overflow {
                     width: calc(#{$chat-list-width} - 120px);
                     overflow: hidden;
                     text-overflow: ellipsis;
 					white-space: nowrap;
-					
+
 					@include screen-mobile {
 						width: 200px;
-					}	
+					}
                 }
 			}
 
@@ -213,7 +215,7 @@ $chat-list-width: 380px;
 					background-color: transparent;
 					font-size: 18px;
                     width: 70%;
-                    
+
                     &:focus {
                         outline: transparent;
                     }
@@ -235,7 +237,7 @@ $chat-list-width: 380px;
 			position: relative;
 			padding: 0px;
 			background-color: $white;
-			@include transition(all 0.3s ease-in-out); 
+			@include transition(all 0.3s ease-in-out);
 
 			@include screen-mobile {
 				width: calc(100% - #{$layout-content-gutter-sm} - #{$layout-content-gutter-sm});
@@ -246,7 +248,7 @@ $chat-list-width: 380px;
 				&.open {
 					left: $layout-content-gutter-sm;
 				}
-			}	
+			}
 
 			.conversation {
 				height: 100%;
@@ -265,11 +267,11 @@ $chat-list-width: 380px;
                 justify-content: space-between;
 				width: 100%;
                 bottom:  0px;
-				
+
 				@include screen-mobile {
 					bottom:  -$chat-footer-height;
-				}	
-				
+				}
+
                 .chat-input {
 					border: 0px;
 					line-height: $chat-footer-height;
@@ -278,7 +280,7 @@ $chat-list-width: 380px;
 
 					@include placeholder {
 						color: $input-color-placeholder;
-					} 
+					}
 				}
 			}
 		}

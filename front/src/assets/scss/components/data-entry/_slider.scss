@@ -1,6 +1,8 @@
+@use '../../variables' as vars;
+
 .ant-slider {
     font-family: $font-family-sans-serif;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     color: $body-color;
     height: $slider-height;
     margin: $slider-gutter;
@@ -25,7 +27,7 @@
 
         .ant-slider-dot {
             border-color: $slider-rail-bg;
-        }    
+        }
 
         .ant-slider-dot-active {
             border-color: $slider-theme-color;
@@ -60,7 +62,7 @@
     width: $slider-dot-size;
     height: $slider-dot-size;
     border: 2px solid rgba($slider-rail-bg, $slider-hover-opacity);
-    background-color: $white; 
+    background-color: $white;
 }
 
 .ant-slider-dot-active {

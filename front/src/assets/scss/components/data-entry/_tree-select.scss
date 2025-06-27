@@ -1,6 +1,9 @@
-.ant-select-tree, 
+@use "sass:color";
+@use '../../variables' as vars;
+
+.ant-select-tree,
 .ant-select-tree-checkbox-group {
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     color: $body-color;
 }
@@ -14,7 +17,7 @@
             }
 
             &.ant-select-tree-node-selected {
-                background-color: darken($color: $dropdown-bg-hover, $amount: 5%)
+                background-color: color.adjust($dropdown-bg-hover, $lightness: 5%);
             }
         }
     }
@@ -24,7 +27,7 @@
     color: $body-color;
 }
 
-.ant-select-tree-checkbox-checked 
+.ant-select-tree-checkbox-checked
 .ant-select-tree-checkbox-inner {
     background-color: $checkbox-theme-color;
     border-color: $checkbox-theme-color;
@@ -49,4 +52,4 @@ li.ant-tree-treenode-disabled {
             background-color: transparent;
         }
     }
-} 
+}

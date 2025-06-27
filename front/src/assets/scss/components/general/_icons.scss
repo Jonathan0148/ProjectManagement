@@ -7,6 +7,7 @@ ul {
         overflow: hidden;
 
         li {
+            border-radius: $border-radius;
             float: left;
             width: 16.66%;
             text-align: center;
@@ -14,24 +15,23 @@ ul {
             cursor: pointer;
             height: 100px;
             color: $body-color;
-            @include transition(color 0.3s ease-in-out); 
+            @include transition(color 0.3s ease-in-out);
             position: relative;
             margin: 10px 0;
-            border-radius: $border-radius;
             overflow: hidden;
             padding: 25px 0 0;
 
             @include screen-tablet {
                 width: 33.33%;
-            } 
+            }
 
             @include screen-mobile {
                 width: 50%;
-            } 
-            
+            }
+
             > i {
                 font-size: 24px;
-                @include transition(transform 0.3s ease-in-out); 
+                @include transition(transform 0.3s ease-in-out);
             }
 
             .icon-text {

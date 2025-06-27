@@ -1,6 +1,8 @@
+@use '../../variables' as vars;
+
 .ant-upload {
     color: $body-color;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     font-family: $font-family-base;
     line-height: $line-height-base;
 
@@ -12,7 +14,7 @@
         background-color: $upload-picture-bg;
         margin-right: $upload-picture-gutter;
         margin-bottom: $upload-picture-gutter;
-        
+
         &:hover {
             border-color: $upload-theme-color
         }
@@ -36,7 +38,7 @@
                 color: $upload-theme-color;
             }
         }
-        
+
         p.ant-upload-text {
             color: $gray-dark;
             font-size: 18px;
@@ -52,7 +54,7 @@
 
 .ant-upload-list {
     font-family: $font-family-sans-serif;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     color: $body-color;
 }
@@ -69,7 +71,7 @@
         &:focus {
             .ant-upload-list-item-name {
                 color: $body-color;
-            }    
+            }
         }
     }
 
@@ -135,7 +137,7 @@
 
     .anticon-loading,
     .anticon-paper-clip {
-        font-size: $font-size-base;
+        font-size: vars.$font-size-base;
         color: $body-color;
         position: absolute;
         top: 8px;
@@ -154,6 +156,5 @@
         float: left;
         width: 200px;
         margin-right: 8px;
-    }   
+    }
 }
-  

@@ -1,7 +1,10 @@
+@use "sass:color";
+@use '../../variables' as vars;
+
 .ant-radio,
 .ant-radio-group,
 .ant-radio-wrapper {
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     color: $body-color;
     align-items: center;
     top: 0;
@@ -18,8 +21,8 @@
 
 .ant-radio-wrapper {
     line-height: $line-height-base;
-    margin-right: $radio-gutter; 
-    
+    margin-right: $radio-gutter;
+
     &:hover {
         .ant-radio {
             .ant-radio-inner {
@@ -43,7 +46,7 @@
 }
 
 .ant-radio-checked {
-    
+
     .ant-radio-inner {
         border-color: $radio-theme-color;
     }
@@ -54,7 +57,7 @@
     .ant-radio-inner {
         border-color: $radio-theme-color;
     }
-}    
+}
 
 
 .ant-radio-disabled {
@@ -69,7 +72,7 @@
 }
 
 .ant-radio-group {
-    
+
     .ant-radio-button-wrapper-checked {
 
         &:not(.ant-radio-button-wrapper-disabled) {
@@ -117,18 +120,18 @@
         &:not(.ant-radio-button-wrapper-disabled) {
             color: $white;
             background: $radio-theme-color;
-            border-color: $radio-theme-color; 
+            border-color: $radio-theme-color;
 
             &:hover {
                 color: $white;
-                background: lighten($radio-theme-color, 5%);
-                border-color: lighten($radio-theme-color, 5%);
+                background: color.adjust($radio-theme-color, $lightness: 5%);
+                border-color: color.adjust($brand-primary, $lightness: 5%);
             }
 
             &:active {
                 color: $white;
-                background: darken($radio-theme-color, 10%);
-                border-color: darken($radio-theme-color, 10%);
+                background: color.adjust($radio-theme-color, $lightness: 10%);
+                border-color: color.adjust($radio-theme-color, $lightness: 10%);
             }
         }
     }
@@ -136,7 +139,7 @@
 .ant-radio-group-large {
     .ant-radio-button-wrapper {
         height: $btn-size-lg;
-        font-size: $font-size-base;
+        font-size: vars.$font-size-base;
         line-height: $btn-size-lg - 0.125rem;
         padding: 0 $btn-padding-x-lg;
     }
@@ -165,7 +168,7 @@
         }
 
         &.ant-radio-button-wrapper {
-            &:first-child { 
+            &:first-child {
                 border-right-color: $radio-theme-color;
             }
         }
@@ -186,7 +189,7 @@
 
     &.ant-radio-button-wrapper-checked {
         color: $white;
-        background-color: darken($btn-disabled-color, 10%);
+        background-color: color.adjust($btn-disabled-color, $lightness: 10%);
         border-color: $border-color;
     }
 }
@@ -233,27 +236,27 @@
         }
 
         &.bg-white {
-            
+
             .ant-radio-inner {
                 border-color: $border-color;
 
-                &:after { 
+                &:after {
                     border-color: $gray;
-                }    
+                }
             }
 
             &:hover {
                 .ant-radio {
-    
+
                     .ant-radio-inner {
                         border-color: $border-color;
                     }
                 }
             }
         }
-    }    
+    }
 
-    span.ant-radio+* {       
+    span.ant-radio+* {
         padding-left: 0px;
         padding-right: 0px;
     }
@@ -264,6 +267,6 @@
             transform: rotate(45deg);
             border-color: transparent;
         }
-    } 
+    }
 }
 

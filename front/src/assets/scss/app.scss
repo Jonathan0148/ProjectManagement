@@ -1,3 +1,6 @@
+/*General*/
+@use 'components/general/buttons' as *;
+
 @import 'variables';
 @import 'mixins';
 @import 'reset';
@@ -9,7 +12,6 @@
 
 /*General*/
 @import 'components/general/typorgraphy';
-@import 'components/general/buttons';
 @import 'components/general/icons';
 
 /*Layout*/

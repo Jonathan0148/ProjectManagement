@@ -1,6 +1,8 @@
+@use '../../variables' as vars;
+
 .ant-picker-dropdown {
     color: $body-color;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     position: absolute;
     z-index: $zindex-dropdown;

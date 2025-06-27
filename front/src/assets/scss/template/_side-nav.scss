@@ -1,3 +1,5 @@
+@use "sass:list";
+
 .side-nav {
     position: fixed;
     top: $header-height;
@@ -7,11 +9,11 @@
     height: 100%;
     z-index: $zindex-navbar;
     overflow-y: auto;
-    @include transition(all 0.2s ease); 
+    @include transition(all 0.2s ease);
 
     @include screen-tablet {
         left: -$side-nav-width;
-    } 
+    }
 
     @include screen-laptop-only {
         width: $side-nav-width-laptop;
@@ -19,7 +21,7 @@
 
     .side-nav-menu {
         margin-bottom: $header-height;
-        
+
         &:not(.ant-menu-inline-collapsed) {
             .dropdown-menu {
                 display: none;
@@ -29,12 +31,12 @@
 
                 > .dropdown-menu {
                     display: block !important;
-                }    
+                }
             }
         }
 
         &.ant-menu-inline-collapsed {
-           
+
             .ant-menu-submenu {
                 position: relative;
 
@@ -62,11 +64,11 @@
                     > .ant-menu-submenu-title {
 
                         .ant-menu-submenu-arrow {
-        
+
                             &:after {
                                 @include transform(rotate(-45deg) translateX(-2px));
                             }
-        
+
                             &:before {
                                 @include transform(rotate(-130deg) translateX(2px));
                             }
@@ -97,7 +99,7 @@
         .ant-menu-inline-collapsed {
             width: $side-nav-folded - 1px;
         }
-    }   
+    }
 
     perfect-scrollbar {
         overflow: visible;
@@ -110,14 +112,14 @@
         .ps__rail-x {
             display: none;
         }
-    }    
+    }
 }
 
 .is-expand {
     @include screen-tablet {
         .side-nav {
             left: 0px;
-        }   
+        }
     }
 }
 
@@ -128,62 +130,62 @@
 }
 
 @each $theme in $theme-color-loop {
-    .#{nth($theme, 1)} {
+    .#{list.nth($theme, 1)} {
 
         &:not(.is-side-nav-dark) {
 
             .side-nav-menu {
                 .ant-menu:not(.ant-menu-horizontal)  {
 
-                    .ant-menu-item-selected { 
-                        background: rgba(nth($theme, 2), 0.1);
-                        color: #{nth($theme, 2)};
-                        
+                    .ant-menu-item-selected {
+                        background: rgba(list.nth($theme, 2), 0.1);
+                        color: #{list.nth($theme, 2)};
+
                         a {
-                            color: #{nth($theme, 2)};
+                            color: #{list.nth($theme, 2)};
                         }
                     }
                 }
-    
+
                 .ant-menu-inline,
                 .ant-menu-vertical,
                 .ant-menu-vertical-left,
                 .ant-menu-vertical-right {
                     .ant-menu-item {
                         &:after {
-                            border-right: 3px solid #{nth($theme, 2)};
+                            border-right: 3px solid #{list.nth($theme, 2)};
                         }
                     }
                 }
 
-                .ant-menu-item, 
+                .ant-menu-item,
                 .ant-menu-submenu-title {
 
                     &:active {
-                        background: rgba(nth($theme, 2), 0.1);
+                        background: rgba(list.nth($theme, 2), 0.1);
                     }
 
                     > a {
 
                         &:hover {
-                            color: #{nth($theme, 2)};
+                            color: #{list.nth($theme, 2)};
                         }
                     }
                 }
 
                 .ant-menu-submenu-title {
                     &:hover {
-                        color: #{nth($theme, 2)};
+                        color: #{list.nth($theme, 2)};
 
                         .ant-menu-submenu-arrow{
                             &:after,
                             &:before {
-                                background: linear-gradient(to right, nth($theme, 2), nth($theme, 2))
+                                background: linear-gradient(to right, list.nth($theme, 2), list.nth($theme, 2))
                             }
                         }
                     }
                 }
             }
-        }    
+        }
     }
 }

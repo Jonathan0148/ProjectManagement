@@ -1,6 +1,8 @@
+@use '../../variables' as vars;
+
 .ant-collapse {
     font-family: $font-family-sans-serif;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     color: $body-color;
     background-color: $collapse-bg;
@@ -10,7 +12,7 @@
 
     > .ant-collapse-item {
         border-bottom: 1px solid $border-color;
-        
+
         > .ant-collapse-header {
             line-height: $line-height-base;
             padding: $collapse-header-spacing;
@@ -31,7 +33,7 @@
             }
         }
     }
-}    
+}
 
 .ant-collapse-content {
     color: $body-color;
@@ -55,5 +57,5 @@
                 padding-top: 0.25rem;
             }
         }
-    } 
+    }
 }

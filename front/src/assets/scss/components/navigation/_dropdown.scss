@@ -1,10 +1,12 @@
+@use '../../variables' as vars;
+
 .ant-dropdown {
     color: $dropdown-item-text;
     margin: 0;
     padding: 0;
     list-style: none;
     z-index: $zindex-dropdown;
-}    
+}
 
 .ant-dropdown-menu {
     min-width: $dropdown-min-width;
@@ -16,11 +18,11 @@
     }
 }
 
-.ant-dropdown-menu-item, 
+.ant-dropdown-menu-item,
 .ant-dropdown-menu-submenu-title {
     padding: $dropdown-padding-y $dropdown-padding-x;
     margin: 0;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     font-weight: $font-weight-normal;
     color: $dropdown-item-text;
     line-height: $line-height-base;
@@ -29,7 +31,7 @@
         display: block;
         padding: 0;
         margin: 0;
-        @include transition(all 0.3s); 
+        @include transition(all 0.3s);
         color: $dropdown-item-text;
     }
 

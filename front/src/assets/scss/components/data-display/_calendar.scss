@@ -1,6 +1,8 @@
+@use '../../variables' as vars;
+
 .ant-picker-calendar {
     color: $body-color;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     background: $white;
 
@@ -37,7 +39,7 @@
 
     .ant-picker-panel {
 
-        .ant-picker-calendar-date { 
+        .ant-picker-calendar-date {
             margin: 0px;
             padding: 4px 8px 0;
             border-top: 1px solid $picker-calendar-border-color;
@@ -89,9 +91,10 @@
 }
 
 .calendar-card {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+
     @include screen-mobile-above {
         width: 320px;
     }
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
 }

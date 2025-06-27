@@ -1,27 +1,29 @@
+@use '../variables' as vars;
+
 .markdown {
     color: $body-color;
     font-size: 14px;
     line-height: 2;
   }
-  
+
   .highlight {
     line-height: 1.5;
   }
-  
+
   .markdown img {
     max-width: calc(100% - 32px);
   }
-  
+
   .markdown p > img {
     margin: 34px 0;
     box-shadow: 0 8px 20px rgba(143, 168, 191, 0.35);
   }
-  
+
   .markdown p > img.markdown-inline-image {
     margin: 0;
     box-shadow: none;
   }
-  
+
   .markdown h1 {
     margin-top: 8px;
     margin-bottom: 20px;
@@ -29,22 +31,22 @@
     font-weight: 500;
     font-size: 30px;
     line-height: 38px;
-  
+
     .subtitle {
       margin-left: 12px;
-  
+
       .ant-row-rtl & {
         margin-right: 12px;
         margin-left: 0;
       }
     }
   }
-  
+
   .markdown h2 {
     font-size: 24px;
     line-height: 32px;
   }
-  
+
   .markdown h2,
   .markdown h3,
   .markdown h4,
@@ -55,7 +57,7 @@
     color: $gray-dark;
     font-weight: 500;
   }
-  
+
   .markdown h3 {
     font-size: 18px;
   }
@@ -68,7 +70,7 @@
   .markdown h6 {
     font-size: 12px;
   }
-  
+
   .markdown hr {
     clear: both;
     height: 1px;
@@ -76,17 +78,17 @@
     background: $border-color;
     border: 0;
   }
-  
+
   .markdown p,
   .markdown pre {
     margin: 1em 0;
   }
-  
+
   .markdown ul > li {
     margin-left: 20px;
     padding-left: 4px;
     list-style-type: circle;
-  
+
     .ant-row-rtl & {
       margin-right: 20px;
       margin-left: 0;
@@ -97,12 +99,12 @@
       display: none;
     }
   }
-  
+
   .markdown ol > li {
     margin-left: 20px;
     padding-left: 4px;
     list-style-type: decimal;
-  
+
     .ant-row-rtl & {
       margin-right: 20px;
       margin-left: 0;
@@ -110,12 +112,12 @@
       padding-left: 0;
     }
   }
-  
+
   .markdown ul > li > p,
   .markdown ol > li > p {
     margin: 0.2em 0;
   }
-  
+
   .markdown code {
     margin: 0 1px;
     padding: 0.2em 0.4em;
@@ -124,28 +126,28 @@
     border: 1px solid $border-color;
     border-radius: 3px;
   }
-  
+
   .markdown pre {
     font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
     background: #f5f5f5;
     border-radius: $border-radius;
   }
-  
+
   .markdown pre code {
     margin: 0;
     padding: 0;
     overflow: auto;
     color: $body-color;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     background: #f5f5f5;
     border: none;
   }
-  
+
   .markdown strong,
   .markdown b {
     font-weight: 500;
   }
-  
+
   .markdown > table {
     width: 100%;
     margin: 8px 0 16px;
@@ -154,28 +156,28 @@
     border-collapse: collapse;
     border-spacing: 0;
   }
-  
+
   .markdown > table th {
     color: #5c6b77;
     font-weight: 500;
     white-space: nowrap;
     background: rgba(0, 0, 0, 0.02);
   }
-  
+
   .markdown > table th,
   .markdown > table td {
     padding: 16px 24px;
     text-align: left;
     border: 1px solid $border-color;
   }
-  
+
   .markdown blockquote {
     margin: 1em 0;
     padding-left: 0.8em;
     color: $body-color;
     font-size: 90%;
     border-left: 4px solid $border-color;
-  
+
     .ant-row-rtl & {
       padding-right: 0.8em;
       padding-left: 0;
@@ -183,50 +185,50 @@
       border-left: none;
     }
   }
-  
+
   .markdown blockquote p {
     margin: 0;
   }
-  
+
   .markdown .anchor {
     margin-left: 8px;
     opacity: 0;
     transition: opacity .3s;
-  
+
     .ant-row-rtl & {
       margin-right: 8px;
       margin-left: 0;
     }
   }
-  
+
   .markdown .waiting {
     color: #ccc;
     cursor: not-allowed;
   }
-  
+
   .markdown a.edit-button {
     display: inline-block;
     margin-left: 8px;
     text-decoration: none;
-  
+
     .ant-row-rtl & {
       margin-right: 8px;
       margin-left: 0;
     }
     i {
       color: $body-color;
-  
+
       &:hover {
         color: $brand-primary;
       }
     }
-  
+
     .anticon {
       display: block;
       font-size: 16px;
     }
   }
-  
+
   .markdown h1:hover .anchor,
   .markdown h2:hover .anchor,
   .markdown h3:hover .anchor,
@@ -236,15 +238,15 @@
     display: inline-block;
     opacity: 1;
   }
-  
+
   .markdown > br,
   .markdown > p > br {
     clear: both;
   }
-  
+
   .markdown.api-container {
     overflow-x: auto;
-  
+
     table {
       min-width: 720px;
       margin: 2em 0;
@@ -252,26 +254,26 @@
       font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
       line-height: $line-height-base;
       border: 1px solid $border-color;
-  
+
       th,
       td {
         padding: 12px;
         border-color: $border-color;
         border-width: 1px 0;
       }
-  
+
       th {
         padding-top: 14px;
         border-width: 0 0 2px 0;
       }
-  
+
       tbody tr {
         transition: all 0.3s;
         &:hover {
           background: rgba(60, 90, 100, 0.04);
         }
       }
-  
+
       td {
         &:first-child {
           width: 20%;
@@ -290,12 +292,12 @@
         }
       }
     }
-  
+
     hr {
       margin: 12px 0;
     }
   }
-  
+
   .grid-demo,
   [id^='components-grid-demo-'] {
     .demo-row,
@@ -419,7 +421,7 @@
       line-height: 80px;
     }
   }
-  
+
   [id='components-grid-demo-playground'],
   [id='components-grid-demo-gutter'] {
     > .code-box-demo .ant-row > div {
@@ -427,7 +429,7 @@
       margin-bottom: 0;
     }
   }
-  
+
   // For Changelog
   .markdown ul.ant-timeline {
     line-height: 2;
@@ -450,4 +452,3 @@
       margin-top: 40px;
     }
   }
-  

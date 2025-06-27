@@ -1,3 +1,5 @@
+@use '../variables' as vars;
+
 .demo-components-container {
     @include screen-tablet-above {
         width: calc(100% - 180px);
@@ -121,7 +123,7 @@
         a:hover {
             color: $brand-primary;
             font-weight: 500;
-            font-size: $font-size-base;
+            font-size: vars.$font-size-base;
         }
     }
 
@@ -162,7 +164,7 @@
         &.markdown {
             position: relative;
             width: 100%;
-            font-size: $font-size-base;
+            font-size: vars.$font-size-base;
             border-radius: 0 0 $border-radius $border-radius;
             transition: background-color 0.4s;
         }

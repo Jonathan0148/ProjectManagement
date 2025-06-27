@@ -1,5 +1,8 @@
+@use "sass:color";
+@use '../../variables' as vars;
+
 .ant-table {
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     color: $table-color;
 
@@ -14,7 +17,7 @@
             margin-top: -2px;
             border-top: 0px;
         }
-    } 
+    }
 
     .ant-table-content {
         @include screen-mobile {
@@ -54,7 +57,7 @@
                 background: $table-has-action-hover-bg;
             }
 
-            
+
             &.ant-table-column-has-actions {
                 &.ant-table-column-has-sorters {
 
@@ -66,7 +69,7 @@
                             background: $table-has-action-hover-bg;
 
                             &:hover {
-                                background: darken($table-has-action-hover-bg, 5%);
+                                background: color.adjust($table-has-action-hover-bg, $lightness: 5%);
                             }
                         }
                     }
@@ -88,11 +91,11 @@
         &:first-child {
             >th{
                 &:first-child {
-                    border-top-left-radius: $table-border-radius; 
+                    border-top-left-radius: $table-border-radius;
                 }
 
                 &:last-child {
-                    border-top-right-radius: $table-border-radius; 
+                    border-top-right-radius: $table-border-radius;
                 }
             }
         }
@@ -120,31 +123,31 @@
 
             &:hover {
                 > td {
-                    background: $table-hover; 
+                    background: $table-hover;
                 }
             }
         }
 
         &.ant-table-row-selected  {
             > td {
-                background: $table-selected !important; 
+                background: $table-selected !important;
             }
         }
-        
+
 
         &:last-child {
             >td{
                 &:first-child {
-                    border-bottom-left-radius: $table-border-radius; 
+                    border-bottom-left-radius: $table-border-radius;
                 }
 
                 &:last-child {
-                    border-bottom-right-radius: $table-border-radius; 
+                    border-bottom-right-radius: $table-border-radius;
                 }
             }
         }
     }
-}  
+}
 
 tbody > tr.ant-table-placeholder:hover > td {
     background: $white !important;
@@ -219,14 +222,14 @@ tbody > tr.ant-table-placeholder:hover > td {
 .ant-table-title {
     padding: $table-spacing;
     border-top-left-radius: $table-border-radius;
-    border-top-right-radius: $table-border-radius; 
+    border-top-right-radius: $table-border-radius;
 }
 
 .ant-table-footer {
     padding: $table-spacing;
     background: $table-foot-bg;
     border-bottom-left-radius: $table-border-radius;
-    border-bottom-right-radius: $table-border-radius; 
+    border-bottom-right-radius: $table-border-radius;
     border-top: 1px solid $table-border;
 }
 
@@ -253,12 +256,12 @@ tr.ant-table-expanded-row {
 .ant-table-fixed-header {
     .ant-table-thead {
         > tr {
-    
+
             > th {
                 background: $gray-lightest;
             }
         }
-    }                   
+    }
 }
 
 .editable-cell {
@@ -312,6 +315,6 @@ tr.ant-table-expanded-row {
                     }
                 }
             }
-        }  
-    }  
+        }
+    }
 }

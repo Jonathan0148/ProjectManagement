@@ -1,6 +1,8 @@
+@use '../../variables' as vars;
+
 .ant-tabs {
     font-family: $font-family-base;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     color: $body-color;
 
@@ -13,7 +15,7 @@
                 width: 100%;
                 padding: 0px;
                 opacity: 1;
-            }    
+            }
         }
     }
 
@@ -32,14 +34,14 @@
                 background: $tabs-card-toggler-bg;
                 padding: 0 $tabs-toggler-padding-x;
                 line-height: calc(#{$tabs-card-height} - 2px);
-            }  
-            
-            .ant-tabs-tab-active { 
+            }
+
+            .ant-tabs-tab-active {
                 background: $white;
                 border-color: $tabs-border;
                 color: $body-color;
                 padding-bottom: 1px;
-            }    
+            }
 
             .anticon-close {
                 color: $body-color;
@@ -51,9 +53,9 @@
                 height: 14px;
 
                 &:hover {
-                    color: $gray-dark; 
+                    color: $gray-dark;
                 }
-            }    
+            }
         }
     }
 }
@@ -65,7 +67,7 @@
 }
 
 .ant-tabs-nav-container {
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     overflow: hidden;
     position: relative;
@@ -135,7 +137,7 @@
 .ant-tabs-ink-bar {
     height: 2px;
     background: $tabs-theme-color;
-}    
+}
 
 .ant-tabs-large {
     .ant-tabs-tab {

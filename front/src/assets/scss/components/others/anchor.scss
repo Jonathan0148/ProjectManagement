@@ -1,6 +1,8 @@
+@use '../../variables' as vars;
+
 .ant-anchor {
     font-family: $font-family-base;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     color: $body-color;
     margin: 0;
@@ -9,14 +11,14 @@
     &.fixed {
         position: relative;
     }
-}    
+}
 
 .ant-anchor-link-title {
     display: block;
     position: relative;
     color: $body-color;
     margin-bottom: 10px;
-}    
+}
 
 .ant-anchor-link {
     padding: 8px 0 8px 15px;

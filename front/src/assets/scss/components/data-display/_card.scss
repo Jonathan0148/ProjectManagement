@@ -1,12 +1,14 @@
+@use '../../variables' as vars;
+
 .ant-card {
     font-family: $font-family-sans-serif;
     line-height: $line-height-base;
     color: $body-color;
     background: $card-bg;
     border-radius: $card-border-radius;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     margin-bottom: 1.25rem;
-}   
+}
 
 .ant-card-bordered {
     border: 1px solid $card-border-color;
@@ -60,7 +62,7 @@
                 0 1px 0 0 $card-border-color inset;
     width: auto;
     padding: $card-spacer-y $card-spacer-x;
-}    
+}
 
 .ant-card-actions {
     border-top: 1px solid $card-border-color;
@@ -75,14 +77,14 @@
         & :not(:last-child) {
             border-right: 1px solid $card-border-color;
         }
-        
+
         > span {
 
             .anticon {
                 font-size: 16px;
                 line-height: $line-height-base;;
-            }  
-            
+            }
+
             &:hover {
                 color: $brand-primary;
             }
@@ -138,7 +140,7 @@
         font-weight: bold;
         margin-bottom: 0;
     }
-} 
+}
 .content__body-card{
     margin-top: 16px;
     color: #353535;

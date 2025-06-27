@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "sass:list";
+
 .ant-tag {
     font-family: $font-family-base;
     margin: 0 10px 10px 0;
@@ -24,15 +27,15 @@
 .ant-tag-checkable {
     background-color: transparent;
     border-color: transparent;
-    
+
     &:active {
-        background-color: darken($tag-theme-color, 10%);
+        background-color: color.adjust($tag-theme-color, $lightness: 10%);
         color: $white;
     }
-    
+
     &:not(.ant-tag-checkable-checked){
 
-        &:hover { 
+        &:hover {
             color: $tag-theme-color;
         }
     }
@@ -54,30 +57,30 @@
             color: $white;
         }
     }
-}    
+}
 
 @each $tone in $tone-loop {
 
-    .ant-tag-#{nth($tone, 1)} {
-        color: #{nth($tone, 2)};
-        background: #{nth($tone, 3)};
+    .ant-tag-#{list.nth($tone, 1)} {
+        color: #{list.nth($tone, 2)};
+        background: #{list.nth($tone, 3)};
         border-color: transparent;
         font-weight: 500;
     }
-}    
+}
 
 .m-b-0 {
 
     .ant-tag {
         margin-bottom: 0px;
-    }    
+    }
 }
 
 .m-r-0 {
 
     .ant-tag {
         margin-right: 0px;
-    }    
+    }
 }
 
 .editable-tag {

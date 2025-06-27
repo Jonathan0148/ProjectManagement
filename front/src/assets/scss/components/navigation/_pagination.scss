@@ -1,13 +1,15 @@
+@use '../../variables' as vars;
+
 .ant-pagination {
     font-family: $font-family-base;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     color: $gray-light;
-    
+
     .ant-select {
         color: $gray-light;
     }
-    
+
     .ant-select-selection--single,
     .ant-select-selection--multiple {
         height: $pagination-size;
@@ -50,7 +52,7 @@
         border-color: transparent;
 
         a {
-            color: $pagination-theme-color; 
+            color: $pagination-theme-color;
         }
     }
 }
@@ -68,7 +70,7 @@
     &:focus {
 
         a {
-            color: $white; 
+            color: $white;
         }
     }
 }
@@ -78,7 +80,7 @@
     color: $gray-light;
 
     .ant-pagination-item-link {
-        border-color: $border-color; 
+        border-color: $border-color;
         border-radius: $border-radius-circle;
         cursor: pointer;
     }
@@ -130,7 +132,7 @@
     input {
         padding: 4px 11px;
         height: $pagination-size;
-        font-size: $font-size-base;
+        font-size: vars.$font-size-base;
         line-height: 1.5;
         color: $gray-dark;
         background-color: $white;

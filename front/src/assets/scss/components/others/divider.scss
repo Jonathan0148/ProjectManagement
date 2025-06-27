@@ -1,6 +1,8 @@
+@use '../../variables' as vars;
+
 .ant-divider {
     font-family: $font-family-base;
-    font-size: $font-size-base;
+    font-size: vars.$font-size-base;
     line-height: $line-height-base;
     color: $body-color;
     background: $border-color;
