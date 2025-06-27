@@ -9,9 +9,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { LoadingButtonDirective } from '../../../../shared/directives/loading-button.directive';
 import { NzCardModule } from 'ng-zorro-antd/card';
-import { ApiService } from '../../../../core/services/api.service';
-import { LoginResponseData } from '../../../../core/interfaces/auth.interface';
+import { LoginResponseData } from '../../../../shared/interfaces/auth.interface';
 import { CookieService } from 'ngx-cookie-service';
+import { ApiService } from '../../../../shared/services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -35,10 +35,12 @@ export class LoginComponent implements OnInit {
   loading = false;
   showPassword = false;
 
-  private router = inject(Router);
-  private fb = inject(FormBuilder);
-  private _cookieService = inject(CookieService);
-  private _api = inject(ApiService);
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private _cookieService: CookieService,
+    private _api: ApiService,
+  ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({

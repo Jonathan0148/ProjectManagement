@@ -1,1 +1,59 @@
-<p>user-list works!</p>
+<div class="user-list-container">
+  <nz-card class="user-list-card expanded-card" [nzBordered]="false">
+    <div class="header-toolbar">
+      <div class="header-title">
+        <h2>{{ 'user.tittle' | translate }}</h2>
+        <p class="text-muted">{{ 'user.subtittle' | translate }}</p>
+      </div>
+      <button nz-button nzType="primary" (click)="onAddUser()" nz-tooltip="{{ 'global.add' | translate }}">
+        <i nz-icon nzType="plus"></i>
+        {{ 'global.add' | translate }}
+      </button>
+    </div>
+
+    <nz-table [nzData]="users" [nzLoading]="loading" [nzBordered]="true" [nzSize]="'middle'"
+      [nzScroll]="{ x: '1000px' }">
+      <thead>
+        <tr>
+          <th>{{ 'user.role' | translate }}</th>
+          <th>{{ 'user.name' | translate }}</th>
+          <th>{{ 'user.email' | translate }}</th>
+          <th>{{ 'user.dateInsert' | translate }}</th>
+          <th>{{ 'user.active' | translate }}</th>
+          <th>{{ 'global.actions' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.role?.name }}</td>
+          <td>{{ user.names }} {{ user.surnames }}</td>
+          <td>{{ user.email }} {{ user.surnames }}</td>
+          <td>{{ user.insertDate | date: 'yyyy-MM-dd HH:mm' }}</td>
+          <td>
+            <nz-tag [nzColor]="user.active ? 'green' : 'red'">
+              {{ user.active ? 'Activo' : 'Inactivo' }}
+            </nz-tag>
+          </td>
+          <td>
+            <div class="action-buttons">
+              <button nz-button nzType="default" nzShape="circle" nz-tooltip="{{ 'global.view' | translate }}"
+                (click)="onView(user)">
+                <i nz-icon nzType="eye"></i>
+              </button>
+
+              <button nz-button nzType="primary" nzShape="circle" nz-tooltip="{{ 'global.edit' | translate }}"
+                (click)="onEdit(user)">
+                <i nz-icon nzType="edit"></i>
+              </button>
+
+              <button nz-button nzShape="circle" nzDanger nzType="default" nz-popconfirm
+                [nzPopconfirmTitle]="'¿Estás seguro de eliminar este usuario?'" [nzOkText]="'Sí'" [nzCancelText]="'No'" (nzOnConfirm)="onDelete(user)">
+                <i nz-icon nzType="delete"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-card>
+</div>

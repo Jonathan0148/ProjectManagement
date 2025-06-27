@@ -1,1 +1,90 @@
-<p>user-form works!</p>
+<div class="user-form-container">
+  <nz-card class="user-list-card expanded-card" [nzBordered]="false">
+    <div class="header-with-back">
+      <button nz-button nzType="text" nzShape="circle" (click)="goBack()" nz-tooltip="Regresar">
+        <i nz-icon nzType="arrow-left"></i>
+      </button>
+      <div>
+        <h2 class="mb-0">{{ 'user.addTitle' | translate }}</h2>
+        <p class="text-muted mb-2">{{ 'user.addSubtitle' | translate }}</p>
+      </div>
+    </div>
+
+    <form nz-form [formGroup]="form" nzLayout="vertical" (ngSubmit)="submitForm()">
+      <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="names">{{ 'user.names' | translate }}</nz-form-label>
+            <nz-form-control nzErrorTip="Por favor ingresa los nombres">
+              <input type="text" nz-input formControlName="names" placeholder="Nombres" />
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="surnames">{{ 'user.surnames' | translate }}</nz-form-label>
+            <nz-form-control nzErrorTip="Por favor ingresa los apellidos">
+              <input type="text" nz-input formControlName="surnames" placeholder="Apellidos" />
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+      </nz-row>
+
+      <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="username">{{ 'user.username' | translate }}</nz-form-label>
+            <nz-form-control nzErrorTip="Por favor ingresa el usuario">
+              <input type="text" nz-input formControlName="username" placeholder="Usuario" />
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzFor="email">{{ 'user.email' | translate }}</nz-form-label>
+            <nz-form-control nzErrorTip="Por favor ingresa el email">
+              <input type="email" nz-input formControlName="email" placeholder="Correo electrónico" />
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+      </nz-row>
+
+      <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="roles_id">{{ 'user.role' | translate }}</nz-form-label>
+            <nz-form-control nzErrorTip="Por favor selecciona un rol">
+              <nz-select formControlName="roles_id" placeholder="Seleccionar rol">
+                <nz-option *ngFor="let r of roles" [nzValue]="r.id" [nzLabel]="r.name"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzFor="active">{{ 'user.active' | translate }}</nz-form-label>
+            <nz-form-control>
+              <label nz-checkbox formControlName="active">
+                {{ form.get('active')?.value ? 'Activo' : 'Inactivo' }}
+              </label>
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+      </nz-row>
+
+      <nz-form-item *ngIf="mode !== 'view'">
+        <nz-form-control>
+          <div class="d-flex justify-content-end w-100">
+            <button nz-button nzType="primary" [disabled]="form.invalid">
+              <i nz-icon nzType="save"></i>
+              {{ 'global.save' | translate }}
+            </button>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-card>
+</div>

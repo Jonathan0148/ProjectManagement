@@ -1,0 +1,31 @@
+.user-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100%;
+}
+
+.user-list-card.expanded-card {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+.header-with-back {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.header-with-back h2 {
+  margin: 0;
+}
+
+.header-with-back p {
+  margin: 0;
+  color: #888;
+}
+

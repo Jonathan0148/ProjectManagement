@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="header-left">
+    <img src="assets/icon.png" alt="Logo" class="logo" />
+    <span class="app-name">Project Management</span>
+  </div>
+
+  <div class="header-right">
+    <a nz-dropdown [nzDropdownMenu]="menu" class="user-menu">
+      <i nz-icon nzType="user" nzTheme="outline"></i>
+    </a>
+
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        <!-- <li nz-menu-item [routerLink]="['/profile']">Perfil</li> -->
+        <li nz-menu-item (click)="logout()">Cerrar sesión</li>
+      </ul>
+    </nz-dropdown-menu>
+  </div>
+</header>

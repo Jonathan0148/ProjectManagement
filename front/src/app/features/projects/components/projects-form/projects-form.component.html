@@ -1,0 +1,36 @@
+<div class="project-form-container">
+  <nz-card class="project-list-card expanded-card" [nzBordered]="false">
+    <div class="header-with-back">
+      <button nz-button nzType="text" nzShape="circle" (click)="goBack()" nz-tooltip="Regresar">
+        <i nz-icon nzType="arrow-left"></i>
+      </button>
+      <div>
+        <h2 class="mb-0">{{ 'project.addTitle' | translate }}</h2>
+        <p class="text-muted mb-2">{{ 'project.addSubtitle' | translate }}</p>
+      </div>
+    </div>
+
+    <form nz-form [formGroup]="form" nzLayout="vertical" (ngSubmit)="submitForm()">
+      <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="name">{{ 'project.name' | translate }}</nz-form-label>
+            <nz-form-control nzErrorTip="Por favor ingresa el nombre">
+              <input type="text" nz-input formControlName="name" placeholder="Nombre" />
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+      </nz-row>
+      <nz-form-item *ngIf="mode !== 'view'">
+        <nz-form-control>
+          <div class="d-flex justify-content-end w-100">
+            <button nz-button nzType="primary" [disabled]="form.invalid">
+              <i nz-icon nzType="save"></i>
+              {{ 'global.save' | translate }}
+            </button>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-card>
+</div>

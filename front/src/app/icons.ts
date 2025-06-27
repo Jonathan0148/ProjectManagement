@@ -4,7 +4,19 @@ import {
   LockOutline,
   MailOutline,
   EyeOutline,
-  EyeInvisibleOutline
+  EyeInvisibleOutline,
+  HomeOutline,
+  AppstoreOutline,
+  ProjectOutline,
+  FundProjectionScreenOutline,
+  SettingOutline,
+  LayoutOutline,
+  EditOutline,
+  DeleteOutline,
+  PlusOutline,
+  SaveOutline,
+  ArrowLeftOutline,
+  CloseOutline
 } from '@ant-design/icons-angular/icons';
 
 export const icons: IconDefinition[] = [
@@ -12,5 +24,18 @@ export const icons: IconDefinition[] = [
   LockOutline,
   MailOutline,
   EyeOutline,
-  EyeInvisibleOutline
+  EyeInvisibleOutline,
+  HomeOutline,
+  AppstoreOutline,
+  ProjectOutline,
+  FundProjectionScreenOutline,
+  SettingOutline,
+  LayoutOutline,
+  EditOutline,
+  DeleteOutline,
+  PlusOutline,
+  SaveOutline,
+  ArrowLeftOutline,
+  AppstoreOutline,
+  CloseOutline
 ];
