@@ -20,5 +20,10 @@ export const appRoutes: Routes = [
     path: 'projects',
     canActivate: [authGuard],
     loadChildren: () => import('./features/projects/projects.routes').then(m => m.PROJECTS_ROUTES)
+  },
+  {
+    path: 'board',
+    canActivate: [authGuard],
+    loadChildren: () => import('./features/board/board.routes').then(m => m.BOARD_ROUTES)
   }
 ];

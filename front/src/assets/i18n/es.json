@@ -63,5 +63,9 @@
     "dateInsert": "Fecha de Registro",
     "addTitle": "Agregar Proyecto",
     "addSubtitle": "Completa el formulario para registrar un nuevo proyecto"
+  },
+  "board": {
+    "tittle": "Tablero Planeación",
+    "subtittle": "Gestión de tareas en el tablero"
   }
 }

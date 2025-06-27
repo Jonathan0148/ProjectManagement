@@ -16,6 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { USERS_CONFIG } from './app/features/users/users.config';
 import { SHARED_CONFIG } from './app/shared/shared.config';
 import { PROJECTS_CONFIG } from './app/features/projects/projects.config';
+import { BOARD_CONFIG } from './app/features/board/board.config';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -28,6 +29,7 @@ bootstrapApplication(AppComponent, {
     ...AUTH_CONFIG,
     ...USERS_CONFIG,
     ...SHARED_CONFIG,
-    ...PROJECTS_CONFIG
+    ...PROJECTS_CONFIG,
+    ...BOARD_CONFIG
   ]
 });

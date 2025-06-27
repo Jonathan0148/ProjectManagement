@@ -1,0 +1,90 @@
+.board-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100%;
+}
+
+.board-list-card.expanded-card {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+.kanban-board {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-top: 1rem;
+}
+
+.kanban-column {
+  flex: 1;
+  min-width: 220px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.kanban-column h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 100px;
+}
+
+.task-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 0.75rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: move;
+  transition: all 0.2s;
+  gap: 0.5rem;
+}
+
+
+.task-card:hover {
+  background: #e6f7ff;
+}
+
+::ng-deep .cdk-drag-preview {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+  background-color: white;
+  font-weight: 500;
+}
+
+::ng-deep .cdk-drag-animating {
+  transition: transform 150ms cubic-bezier(0, 0, 0.2, 1);
+}
+.toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.select-project {
+  min-width: 250px;
+  flex: 1;
+}
+
+.task-name-input {
+  flex: 2;
+  min-width: 300px;
+}
