@@ -19,6 +19,9 @@ export class Task {
   @Column({ name: 'status', type: 'tinyint' })
   status: boolean;
 
+  @Column({ name: 'state', type: 'int' })
+  state: number;
+
   @Column({ name: 'update_date', type: 'datetime', nullable: true })
   updateDate?: Date;
 
