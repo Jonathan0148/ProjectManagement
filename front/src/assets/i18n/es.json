@@ -1,0 +1,46 @@
+{
+  "loading": "Cargando",
+  "global": {
+    "print": "Imprimir",
+    "add": "Agregar",
+    "download": "Descargar",
+    "export": "Exportar",
+    "copy": "Copiar",
+    "save": "Guardar",
+    "detail": "Ver Detalle",
+    "edit": "Editar",
+    "back": "Regresar",
+    "delete": "Eliminar",
+    "deleteConfirm": "Esta seguro que desea eliminar este registro?",
+    "searchProduct": "Búsqueda avanzada"
+  },
+  "errors": {
+    "required": "Campo requerido"
+  },
+  "notification": {
+    "title": "Notificaciones",
+    "viewAll": "Ver Todos"
+  },
+  "login": {
+    "initSesion": "Iniciar Sesión",
+    "credentials": "Ingrese sus credenciales de acceso",
+    "forgotPassword": "Olvidó su contraseña?",
+    "signIn": "Ingresar",
+    "user": "Usuario",
+    "password": "Contraseña",
+    "logout": "Cerrar Sesión"
+  },
+  "user": {
+    "editProfile": "Editar Perfil",
+    "locals": "Administrar Locales",
+    "settings": "Configuración"
+  },
+  "role": {
+    "admin": "Administrador",
+    "add": "Agregar Rol",
+    "addTitle": "Agregar Rol",
+    "editTitle": "Editar Rol",
+    "description": "Descripción",
+    "descritionModule": "Seleccione los modulos y los permisos que se van a habilitar al usuario:"
+  }
+}
