@@ -1,6 +1,29 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+import { appRoutes } from './app/app.routes';
+import { provideNgxTranslate } from './app/core/translate/translate.providers';
+
+import { NZ_ICONS } from 'ng-zorro-antd/icon';
+import { icons } from './app/icons';
+import { responseInterceptor } from './app/core/interceptors/response.interceptor';
+import { AUTH_CONFIG } from './app/features/auth/auth.config';
+import { tokenInterceptor } from './app/core/interceptors/auth.interceptor';
+import { CookieService } from 'ngx-cookie-service';
+import { USERS_CONFIG } from './app/features/users/users.config';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideHttpClient(withInterceptors([responseInterceptor, tokenInterceptor])),
+    provideAnimations(),
+    provideRouter(appRoutes),
+    provideNgxTranslate(),
+    { provide: NZ_ICONS, useValue: icons },
+    CookieService,
+    ...AUTH_CONFIG,
+    ...USERS_CONFIG
+  ]
+});

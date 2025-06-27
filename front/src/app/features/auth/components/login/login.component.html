@@ -1,0 +1,53 @@
+<div class="login-container">
+  <nz-card class="login-card expanded-card" [nzBordered]="false">
+    <h2 class="mb-3">{{ 'login.initSesion' | translate }}</h2>
+    <p class="text-muted mb-4">{{ 'login.credentials' | translate }}</p>
+
+    <form nz-form [formGroup]="form" nzLayout="vertical" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="username">{{ 'login.user' | translate }}</nz-form-label>
+        <nz-form-control nzErrorTip="Por favor ingresa tu usuario!">
+          <nz-input-group [nzPrefix]="prefixUser">
+            <input type="text" nz-input formControlName="username" placeholder="Usuario" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="password">{{ 'login.password' | translate }}</nz-form-label>
+        <nz-form-control nzErrorTip="Por favor ingresa tu contraseña!">
+          <nz-input-group [nzPrefix]="prefixLock" [nzSuffix]="suffixEye">
+            <input [type]="showPassword ? 'text' : 'password'" nz-input formControlName="password"
+              placeholder="Contraseña" />
+          </nz-input-group>
+
+          <ng-template #suffixEye>
+            <i nz-icon [nzType]="showPassword ? 'eye-invisible' : 'eye'" class="clickable"
+              (click)="togglePassword()"></i>
+          </ng-template>
+
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <a class="text-muted font-size-13">
+              {{ 'login.forgotPassword' | translate }}
+            </a>
+            <div class="button-login">
+              <button nz-button [nzType]="'primary'" class="login-form-button" [disabled]="form.invalid" ngxLoading
+                [loadingFlag]="loading" [textInitial]="'login.signIn' | translate"
+                [textLoading]="'loading' | translate">
+                {{ 'login.initSesion' | translate }}
+              </button>
+            </div>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+
+    <ng-template #prefixUser><i nz-icon nzType="user"></i></ng-template>
+    <ng-template #prefixLock><i nz-icon nzType="lock"></i></ng-template>
+  </nz-card>
+</div>
